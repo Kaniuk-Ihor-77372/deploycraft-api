@@ -48,10 +48,7 @@ https://deploycraft-api-production.up.railway.app/hello
     * **Language**: **Docker** (wybrany w celu zapewnienia stabilności środowiska Java 17).
     * **Branch**: `main`
     * **Instance Type**: **Free** ($0/month).
-5.  **Komendy uruchomieniowe**:
-    * **Build Command**: `sh mvnw clean install -DskipTests`
-    * **Start Command**: `java -jar target/*.jar`
-6.  **Weryfikacja**:
+5.  **Weryfikacja**:
     * Po kliknięciu **Create Web Service** proces budowania i wdrażania trwa ok. 5-7 minut.
     * Gdy pojawi się status **Live**, aplikacja jest dostępna pod adresem: [https://deploycraft-77427-api.onrender.com/hello](https://deploycraft-77427-api.onrender.com/hello).
 
