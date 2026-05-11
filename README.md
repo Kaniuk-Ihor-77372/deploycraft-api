@@ -35,7 +35,7 @@ https://deploycraft-api-production.up.railway.app/hello
 
 
 
-## 🚀 Wdrażanie na Render (Oleksandr Zavoloka 77427)
+## піська Wdrażanie na Render (Oleksandr Zavoloka 77427)
 
 ### 🛠 Proces konfiguracji krok po kroku
 
@@ -54,7 +54,7 @@ https://deploycraft-api-production.up.railway.app/hello
 
 ---
 
-### ⚠️ Napotkane trudności i wnioski
+###  Napotkane trudności i wnioski
 
 Podczas procesu wdrażania wystąpiło kilka wyzwań technicznych, które wymagały analizy różnic między środowiskiem lokalnym a chmurowym:
 
@@ -64,7 +64,7 @@ Podczas procesu wdrażania wystąpiło kilka wyzwań technicznych, które wymaga
 
 ---
 
-### 🎥 Montaż i przygotowanie materiału wideo
+###  Montaż i przygotowanie materiału wideo
 
 * **Narzędzia**: Do nagrania ekranu wykorzystano narzędzia systemowe **Windows (Game Bar)** oraz **OBS Studio**. Montaż wykonano w programie **CapCut / Clipchamp**.
 * **Proces**: Nagranie zrealizowano w sposób ciągły, prezentując autentyczny przepływ pracy: od panelu Render, przez logi, aż po wywołanie API.
