@@ -35,9 +35,9 @@ https://deploycraft-api-production.up.railway.app/hello
 
 
 
-## піська Wdrażanie na Render (Oleksandr Zavoloka 77427)
+## Wdrażanie na Render (Oleksandr Zavoloka 77427)
 
-### 🛠 Proces konfiguracji krok po kroku
+###   Proces konfiguracji krok po kroku
 
 1.  **Utworzenie konta**: Rejestracja w serwisie [Render.com](https://render.com) i wybór darmowego planu (**Free Tier**), który nie wymaga podpięcia karty płatniczej.
 2.  **Tworzenie usługi**: Na Dashboardzie wybieramy przycisk **New +** -> **Web Service**.
