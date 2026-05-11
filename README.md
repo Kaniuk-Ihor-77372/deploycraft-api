@@ -70,3 +70,82 @@ Podczas procesu wdrażania wystąpiło kilka wyzwań technicznych, które wymaga
 * **Proces**: Nagranie zrealizowano w sposób ciągły, prezentując autentyczny przepływ pracy: od panelu Render, przez logi, aż po wywołanie API.
 * **Wnioski z montażu**: Proces przygotowania wideo przebiegł bardzo sprawnie i bez żadnych problemów technicznych.
 * **Finalny materiał**: Film skupia się na kluczowych elementach: potwierdzeniu tożsamości (**Oleksandr Zavoloka, 77427**) oraz demonstracji działającego punktu końcowego `/hello`.
+
+
+
+
+
+
+# Wdrażanie aplikacji Spring Boot na platformie Azure App Service  
+### Ihor Kaniuk 77372
+
+---
+
+# Przygotowanie aplikacji
+
+Projekt został utworzony przy użyciu **Spring Initializr**.
+
+## Wybrane technologie
+
+- Maven
+- Java 17
+- Spring Boot 3.5.14
+- Spring Web
+
+Aplikacja została uruchomiona lokalnie i przetestowana pod adresem:
+
+```bash
+http://localhost:8080/hello
+```
+
+W pliku `application.properties` dodano konfigurację:
+
+```properties
+server.port=${PORT:8080}
+```
+
+---
+
+# Repozytorium GitHub
+
+```bash
+https://github.com/Kaniuk-Ihor-77372/deploycraft-api
+```
+
+---
+
+# Wdrażanie aplikacji na Azure App Service
+
+## Konfiguracja Azure
+
+Utworzono usługę **Azure App Service** z następującą konfiguracją:
+
+| Parametr | Wartość |
+|---|---|
+| Runtime stack | Java 17 |
+| Operating System | Linux |
+| Pricing plan | Free F1 |
+
+W zakładce **Deployment Center** skonfigurowano integrację z:
+- GitHub
+- GitHub Actions CI/CD
+
+Azure automatycznie:
+- budował projekt Maven,
+- tworzył plik `.jar`,
+- wdrażał aplikację po zmianach w repozytorium.
+
+---
+
+# Wnioski końcowe
+
+Azure App Service umożliwia wygodne wdrażanie aplikacji Spring Boot oraz integrację z GitHub Actions.
+
+Najtrudniejszą częścią projektu była konfiguracja deploymentu i rozwiązywanie problemów związanych z usługami Azure.
+
+Projekt pozwolił lepiej zrozumieć:
+
+- deployment aplikacji Spring Boot,
+- działanie usług cloud,
+- automatyzację CI/CD,
+- hosting aplikacji Java w internecie.
