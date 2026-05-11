@@ -35,54 +35,41 @@ https://deploycraft-api-production.up.railway.app/hello
 
 
 
-Wdrażanie na Render (Oleksandr Zavoloka 77427)
-Utworzenie konta: Rejestracja w serwisie Render.com і wybór darmowego planu (Free Tier), który nie wymaga podpięcia karty płatniczej.
+## 🚀 Wdrażanie na Render (Oleksandr Zavoloka 77427)
 
-Tworzenie usługi: Na Dashboardzie klikamy New + -> Web Service.
+### 🛠 Proces konfiguracji krok po kroku
 
-Połączenie z GitHub: Wklejamy bezpośredni link do publicznego repozytorium: https://github.com/Kaniuk-Ihor-77372/deploycraft-api.
+1.  **Utworzenie konta**: Rejestracja w serwisie [Render.com](https://render.com) i wybór darmowego planu (**Free Tier**), który nie wymaga podpięcia karty płatniczej.
+2.  **Tworzenie usługi**: Na Dashboardzie wybieramy przycisk **New +** -> **Web Service**.
+3.  **Połączenie z GitHub**: Wklejamy bezpośredni link do publicznego repozytorium: `https://github.com/Kaniuk-Ihor-77372/deploycraft-api`.
+4.  **Konfiguracja w kreatorze**:
+    * **Name**: `deploycraft-77427-api`
+    * **Region**: `Frankfurt (EU Central)` (najniższe opóźnienia dla Polski).
+    * **Language**: **Docker** (wybrany w celu zapewnienia stabilności środowiska Java 17).
+    * **Branch**: `main`
+    * **Instance Type**: **Free** ($0/month).
+5.  **Komendy uruchomieniowe**:
+    * **Build Command**: `sh mvnw clean install -DskipTests`
+    * **Start Command**: `java -jar target/*.jar`
+6.  **Weryfikacja**:
+    * Po kliknięciu **Create Web Service** proces budowania i wdrażania trwa ok. 5-7 minut.
+    * Gdy pojawi się status **Live**, aplikacja jest dostępna pod adresem: [https://deploycraft-77427-api.onrender.com/hello](https://deploycraft-77427-api.onrender.com/hello).
 
-Proces konfiguracji w kreatorze:
+---
 
-Name: wpisujemy deploycraft-77427-api.
+### ⚠️ Napotkane trudności i wnioski
 
-Region: wybieramy Frankfurt (EU Central), aby zapewnić niskie opóźnienia w Polsce.
+Podczas procesu wdrażania wystąpiło kilka wyzwań technicznych, które wymagały analizy różnic między środowiskiem lokalnym a chmurowym:
 
-Language: wybieramy Docker (w przypadku braku dostępności Java Runtime w panelu, co gwarantuje stabilność środowiska).
+* **Brak wykrywania środowiska Java**: Platforma Render domyślnie sugerowała Node.js. Z powodu niewielkiego doświadczenia w konfiguracji usług cloud, początkowo próbowano wymusić zmianę w ustawieniach Runtime, jednak finalnie najskuteczniejszym rozwiązaniem okazało się wykorzystanie **Dockera**, co zapewniło pełną izolację aplikacji.
+* **Błąd 404 (Whitelabel Error Page)**: Strona główna zwracała błąd po uruchomieniu. Wymagało to zrozumienia, że Spring Boot bez zdefiniowanego widoku dla ścieżki `/` wyświetla stronę błędu, a poprawny wynik znajduje się pod adresem `/hello`.
+* **Ograniczenia Free Tier**: Instancje na Render "zasypiają" po okresie bezczynności. Powoduje to tzw. "cold start", czyli wydłużony czas oczekiwania (nawet kilkadziesiąt sekund) przy pierwszym wejściu na stronę po przerwie.
 
-Branch: main.
+---
 
-Instance Type: upewniamy się, że wybrano Free ($0/month).
+### 🎥 Montaż i przygotowanie materiału wideo
 
-Komendy budowania i uruchamiania:
-
-Build Command: sh mvnw clean install -DskipTests (użycie przedrostka sh jest kluczowe dla uniknięcia problemów z uprawnieniami pliku wykonywalnego).
-
-Start Command: java -jar target/*.jar.
-
-Weryfikacja:
-
-Po kliknięciu Create Web Service czekamy około 5-7 minut na zakończenie procesu Building i Deploying.
-
-Gdy pojawi się zielony status Live, przechodzimy pod adres: https://deploycraft-77427-api.onrender.com/hello.
-
-Napotkane trudności i wnioski:
-Podczas procesu wdrażania napotkano szereg problemów technicznych, które wynikały z różnic między środowiskiem lokalnym a chmurowym:
-
-Problemy z uprawnieniami (Permission Denied): Skrypt mvnw (Maven Wrapper) nie posiadał uprawnień do wykonywania w środowisku Linux platformy Render. Problem rozwiązano poprzez dodanie komendy sh przed polem build, co pozwoliło na poprawne zbudowanie paczki .jar.
-
-Brak wykrywania środowiska Java: Platforma Render automatycznie sugerowała Node.js zamiast Javy. Z powodu niewielkiego doświadczenia w konfiguracji serwerów chmurowych, początkowo próbowano wymusić zmianę w ustawieniach Runtime, jednak finalnie najskuteczniejszym rozwiązaniem okazało się wykorzystanie Dockera, co zapewniło izolację i pewność, że aplikacja zadziała na Java 17.
-
-Błąd 404 (Whitelabel Error Page): Po pierwszym uruchomieniu strona główna zwracała błąd. Wymagało to zrozumienia, że aplikacja Spring Boot nie posiada zdefiniowanego widoku dla ścieżki głównej (/), a poprawny wynik znajduje się pod dedykowanym punktem końcowym /hello.
-
-Ograniczenia Free Tier: Darmowe instancje na Render "zasypiają" po okresie bezczynności, co powoduje, że pierwsze uruchomienie strony po dłuższej przerwie trwa kilkadziesiąt sekund (tzw. "cold start").
-
-
-Montaż i przygotowanie materiału wideo (Oleksandr Zavoloka 77427)
-Narzędzia: Do nagrania ekranu wykorzystano systemowe narzędzie Windows (Game Bar) / OBS Studio, a do prostego montażu program CapCut / Clipchamp.
-
-Proces: Nagranie zostało zrealizowane w sposób ciągły, aby pokazać autentyczność procesu — od panelu kontrolnego Render, przez logi serwera, aż po finalne wywołanie API w przeglądarce.
-
-Doświadczenia z montażem: W przeciwieństwie do konfiguracji serwera chmurowego, proces nagrywania i montażu wideo przebiegł bardzo sprawnie i bez żadnych problemów technicznych.
-
-Finalny materiał: Wideo zostało przycięte tak, aby skupić się na najważniejszych elementach: potwierdzeniu tożsamości studenta (imię, nazwisko, nr albumu) oraz poprawnym działaniu endpointu /hello. Plik wynikowy jest czytelny i gotowy do weryfikacji przez prowadzącego.
+* **Narzędzia**: Do nagrania ekranu wykorzystano narzędzia systemowe **Windows (Game Bar)** oraz **OBS Studio**. Montaż wykonano w programie **CapCut / Clipchamp**.
+* **Proces**: Nagranie zrealizowano w sposób ciągły, prezentując autentyczny przepływ pracy: od panelu Render, przez logi, aż po wywołanie API.
+* **Wnioski z montażu**: Proces przygotowania wideo przebiegł bardzo sprawnie i bez żadnych problemów technicznych.
+* **Finalny materiał**: Film skupia się na kluczowych elementach: potwierdzeniu tożsamości (**Oleksandr Zavoloka, 77427**) oraz demonstracji działającego punktu końcowego `/hello`.
